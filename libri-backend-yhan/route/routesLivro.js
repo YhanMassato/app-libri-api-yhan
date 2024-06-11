@@ -80,11 +80,11 @@ router.get('/listagemLivros', (req, res)=>{
 });
 
 /* ROTA DE LISTAGEM DE LIVRO POR CÓDIGO DE LIVRO*/
-router.get('/listagemLivro/:cod_livro', (req, res)=>{
+router.get('/listagemLivro/:id_livro', (req, res)=>{
 
-    let { cod_livro } = req.params;
+    let { id_livro } = req.params;
 
-    modelLivro.findByPk(cod_livro)
+    modelLivro.findByPk(id_livro)
     .then(
         (response)=>{
             return res.status(201).json(
@@ -111,12 +111,12 @@ router.get('/listagemLivro/:cod_livro', (req, res)=>{
 });
 
 /* ROTA DE EXCLUSÃO DE LIVRO */
-router.delete('/excluirLivro/:cod_livro', (req, res)=>{
+router.delete('/excluirLivro/:id_livro', (req, res)=>{
 
-    let { cod_livro } = req.params;
+    let { id_livro } = req.params;
 
     modelLivro.destroy(
-        {where:{cod_livro}}
+        {where:{id_livro}}
     ).then(
         ()=>{
             return res.status(201).json(
@@ -144,7 +144,7 @@ router.delete('/excluirLivro/:cod_livro', (req, res)=>{
 /* ROTA DE ALTERAÇÃO DE LIVRO */
 router.put('/alterarLivro', (req, res)=>{
 
-    let { cod_livro, nome_livro, autor_livro, descricao_livro } = req.body;
+    let { id_livro, nome_livro, autor_livro, descricao_livro } = req.body;
 
     modelLivro.update(
         {
@@ -152,7 +152,7 @@ router.put('/alterarLivro', (req, res)=>{
             autor_livro,
             descricao_livro
         },
-        {where:{cod_livro}}
+        {where:{id_livro}}
     ).then(
         ()=>{
             return res.status(201).json(

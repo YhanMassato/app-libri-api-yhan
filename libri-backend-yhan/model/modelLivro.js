@@ -11,9 +11,9 @@ PARAMETROS DO MÉTODO DEFINE
                 REGRAS DO CAMPO DA TABELA (NULL, NOT NULL, DEFAULT...ETC)
 */
 const modeLivro = connection.define(
-    'tbl_livro',
+    'tb_livro',
     {
-        cod_livro:{
+        id_livro:{
             type:Sequelize.INTEGER,
             primaryKey:true,
             autoIncrement:true
